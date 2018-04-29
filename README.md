@@ -12,12 +12,15 @@ A web-based user interface (WUI) for getting gene expression matrix from scratch
 * Operates locally -- no risk of exposing data files potentially subject to privacy and/or intellectual property (IP) rights
 * Example: 
 
-A publicly available [Paired-end Illumina HiSeq2000 MCF7 breast cancer cell line sample](https://www.ebi.ac.uk/ena/data/view/SRR1021668) could be used for code testing.
+A publicly available [Paired-end Illumina HiSeq2000 MCF7 breast cancer cell line sample](https://www.ebi.ac.uk/ena/data/view/SRR1021668) can be used as a test case.
 
 ## How I built it
 
 * Use a whiteboard to brainstorm!
-* Present my idea/progress periodically to others
+
+![Blueprint](./public/Blueprint.jpg?raw=true)
+
+* Present my idea/progress periodically to other participants and sponsors
 
 ## Challenges I ran into
 
@@ -35,7 +38,7 @@ A publicly available [Paired-end Illumina HiSeq2000 MCF7 breast cancer cell line
 
 ## What's next for fastqEngine
 
+* Filling in the gaps and debugging in cross-language
 * Scalability
-* Implementation on remote computer cluster
-* Implementation on cloud platform
+* Implementation on remote computer cluster & cloud platform
 * Adaptabiility as new experimental platforms come up

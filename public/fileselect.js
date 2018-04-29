@@ -43,14 +43,15 @@ $(function() {
 });
 
 function exportJson() {
+  console.log("Beginning to outputing genome parameters...");
   var txtFile = "/tmp/test.txt";
-  console.log("Complete step 0");
+  console.log("Complete step 0!");
   var file = new File([""], txtFile, {type: "text/plain"})
-  console.log("Complete step 1");
+  console.log("Complete step 1!");
   var str = JSON.stringify(myJson);
-  console.log("Complete step 2"); 
+  console.log("Complete step 2!"); 
 
-  file.open("w"); // open file with write access
+  file.open("w"); //open file with write access
   file.writeln("First line of text");
   file.writeln("Second line of text " + str);
   file.write(str);
