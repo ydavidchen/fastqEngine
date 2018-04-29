@@ -4,7 +4,7 @@ An API for getting gene expression matrix from scratch with just few clicks
 
 ## Inspiration
 
-![Motivation](Motivation.jpg)
+![Motivation](./public/Motivation.jpg?raw=true)
 
 ## What it does
 
