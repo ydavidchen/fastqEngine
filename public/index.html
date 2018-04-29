@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fastqEngine</title>
+    <link href="style.min.css" rel="stylesheet"> <!-- <link href="style.css" rel="stylesheet"> -->
+</head>
+<body>
+    <div class="container" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-lg-12 col-lg-12 col-12">
+                <div class="jumbotron">
+                    <h1 style="font-size:30px">fastqEngine: process RNA-seq raw data fast!</h1>
+                    <h4>Developed by: David Chen, SaintsHack2018 Project</h4>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-sm-12 col-12">
+                <h4>Instruction</h4>
+                <p>Download the source code and unzip. Place a copy of the raw data files in the <i>./data</i> sub-directory</p>
+            </div>
+
+            <div class="col-lg-12 col-sm-12 col-12">
+                <h4>Select <i>.fastq</i> or <i>.fastq.gz</i> file(s) that you'd like to process:</h4>
+                 <label class="input-group-btn">
+                   <span class="btn btn-primary">
+                      Browse&hellip; <input type="file" style="display: none;" multiple>
+                   </span>
+                </label>
+                <input type="text" class="form-control" readonly>
+            </div>
+
+            <br>
+            
+            <div class="col-lg-12 col-sm-12 col-12">
+                <h4>Is your experiment single- or pair-end?</h4>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-default" onclick="add2Json(s='-p: p')">Single (<i>-s</i>)</a>
+                    <a href="#" class="btn btn-default" onclick="add2Json(s='-p: s')">Paired (<i>-p</i>)</a>
+                </div>
+            </div>
+
+            <br>
+            
+            <div class="col-lg-12 col-sm-12 col-12">
+                <h4>What is the organism?</h4>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-default" onclick="add2Json(s='-g: hg19')">human (version <i>hg19</i>)</a>
+                    <a href="#" class="btn btn-default" onclick="add2Json(s='-g: hg38')">human (version <i>hg38</i>)</a>
+                    <a href="#" class="btn btn-default" onclick="add2Json(s='-g: mm9')">mouse (version <i>mm9</i>)</a>
+                    <a href="#" class="btn btn-default" onclick="add2Json(s='-g: mm10')">mouse (version <i>mm10</i>)</a>
+                </div>
+            </div>
+            
+            <br>
+            
+            <div class="col-lg-6 col-sm-6 col-12">
+                <h4>Write output log file?</h4>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-default" onclick="add2Json(s='Log: Yes')">Yes please!</a>
+                    <a href="#" class="btn btn-default" onclick="add2Json(s='Log: No')">No, don't bother!</a>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="col-lg-6 col-sm-6 col-12">
+                <h4>Start RNA-seq quality control and processing</h4>
+                <label class="btn btn-block btn-primary" id="save-btn" onclick="exportJson()">Click here to start</label>
+            </div>
+        </div>
+    </div>
+    <script src="jquery-1.11.0.min.js"></script> <!-- <script src="jquery.js"></script> -->
+    <!-- <script src="bootstrap.min.js"></script>  -->
+    <script src="bootstrap.js"></script>
+    <script src="fileselect.js"></script> 
+    <!-- <script src="../FileAPI/node/bundle.js"></script> -->
+    <script src="./src/index.js"></script>
+    <script>
+        $( "button:last" ).click(function() {
+          runScript("../shellPipeline/0_main.sh");
+        });
+    </script>
+    </body>
+</html>

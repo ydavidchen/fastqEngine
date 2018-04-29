@@ -1,3 +1,16 @@
+var myJson = {
+  users: {
+    Job: "current job",
+    Parameters: {}
+  }
+}; 
+
+add2Json = function(s) {
+  console.log(s);
+  myJson.users.Parameters[s] = s;
+  // alert(s);
+}
+
 $(function() {
   // We can attach the `fileselect` event to all file inputs on the page
   $(document).on('change', ':file', function() {
@@ -21,14 +34,29 @@ $(function() {
               input.val(log);
           } else {
               if( log ) {
-                console.log(log);
-                // alert(log);
+                alert(log); 
               }
           }
       });
   });
-
+  return myJson;
 });
+
+function exportJson() {
+  var txtFile = "/tmp/test.txt";
+  console.log("Complete step 0");
+  var file = new File([""], txtFile, {type: "text/plain"})
+  console.log("Complete step 1");
+  var str = JSON.stringify(myJson);
+  console.log("Complete step 2"); 
+
+  file.open("w"); // open file with write access
+  file.writeln("First line of text");
+  file.writeln("Second line of text " + str);
+  file.write(str);
+  file.close();
+  console.log("File written!");
+}
 
 console.save = function(data, filename){
 
@@ -56,19 +84,47 @@ console.save = function(data, filename){
     a.dispatchEvent(e); 
  }
 
+// function convertToCSV(objArray) {
+//     var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+//     var str = '';
+//     for (var i = 0; i < array.length; i++) {
+//         var line = '';
+//         for (var index in array[i]) {
+//             if (line != '') line += ','
+//             line += array[i][index];
+//         }
+//         str += line + '\r\n';
+//     }
+//     return str;
+// }
 
-activateSaveAndExecute = function() {
-  console.save(console); //save
+// function exportCSVFile(headers, items, fileTitle) {
+//     if (headers) {
+//         items.unshift(headers);
+//     }
+//     // Convert Object to JSON
+//     var jsonObject = JSON.stringify(items);
+//     var csv = this.convertToCSV(jsonObject);
+//     var exportedFilenmae = fileTitle + '.csv' || 'export.csv';
+//     var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+//     if (navigator.msSaveBlob) { // IE 10+
+//         navigator.msSaveBlob(blob, exportedFilenmae);
+//     } else {
+//         var link = document.createElement("a");
+//         if (link.download !== undefined) { // feature detection
+//             // Browsers that support HTML5 download attribute
+//             var url = URL.createObjectURL(blob);
+//             link.setAttribute("href", url);
+//             link.setAttribute("download", exportedFilenmae);
+//             link.style.visibility = 'hidden';
+//             document.body.appendChild(link);
+//             link.click();
+//             document.body.removeChild(link);
+//         }
+//     }
+// }
 
-  var mirror = require('browser-terminal-mirror');
-  mirror({
-      errorPattern: /Warning:/g //discussed below 
-  });
-
-  var shellscript = new File("../shellPipeline/");
-  shellscript.execute();
-}
-
-
-
+// $("#save-btn").click(function() {
+//   exportJson(myJson); 
+// });
 
